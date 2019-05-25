@@ -79,12 +79,17 @@ for framePi in camera.capture_continuous(rawCapture, format="bgr", use_video_por
         detections = net.forward()
 
         for detection in detections[0,0,:,:]:
-                postProc(detection, frame, classNames)
-
-        cv2.imshow("Frame", frame)
+                #postProc(detection, frame, classNames)
+                class_id    = int(detection[1])
+                class_name = classNames[class_id]
+                confidence = detection[2]
+                if (confidence >= 0.25):
+                    print(class_name + ' ' + str(confidence))
+        
+        #cv2.imshow("Frame", frame)
         frame_count = frame_count + 1
         end = time.time()
-        print( frame_count / (end - start) )
+        #print( frame_count / (end - start) )
         key = cv2.waitKey(1) & 0xFF
 
         rawCapture.truncate(0)

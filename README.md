@@ -12,10 +12,15 @@ xxxxx
 ## Hardware architecture
 - TBD
 
+### Hardware requirements
+- Raspberry pi zero
+- Arduino XX
+- Google Cloud Platform
+
 ## Software architecture
 - TBD
 
-## Modules
+### Modules
 - vad
 - voice_recognition
 - vision

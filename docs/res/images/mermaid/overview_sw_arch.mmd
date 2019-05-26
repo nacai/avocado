@@ -1,12 +1,34 @@
 graph LR
+    camera(camera)
+    mic(mic)
+    speaker(speaker)
+    servo_motor(servo_motor)
     subgraph ap
-        vision(vision)
         brain(brain)
-        vision-->brain
+        vision(vision)
+        vad(vad)
+        voice_recog(voice_recog.)
+        speech(speech)
     end
     subgraph mp
-        motion
+        motion(motion)
     end
     subgraph cloud
-        c1-->c2
+        voice_recog_cl(voice_recog.)
     end
+
+    mic-->vad
+    vad-->voice_recog
+    speech-->speaker
+    camera-->vision
+
+    vision-->brain
+    voice_recog-->brain
+    
+    voice_recog-->voice_recog_cl
+    voice_recog_cl-->voice_recog
+
+    brain-->speech
+    brain-->motion
+
+    motion-->servo_motor

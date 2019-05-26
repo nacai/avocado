@@ -7,7 +7,7 @@ xxxxx
 - Voice recognition
 - Finding suspicious person
 - Text to speech
-- Cute
+- Cute!
 
 ## Hardware architecture
 ![overview_hw_arch](docs/images/overview_hw_arch.png)
@@ -20,7 +20,7 @@ xxxxx
 ## Software architecture
 ![overview_sw_arch](docs/images/overview_sw_arch.png)
 
-### Modules
+### Software modules
 - brain
 - vad
 - voice_recognition

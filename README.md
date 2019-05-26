@@ -10,7 +10,7 @@ xxxxx
 - Cute
 
 ## Hardware architecture
-- TBD
+![overview_hw_arch](docs/images/overview_hw_arch.png)
 
 ### Hardware requirements
 - Raspberry pi zero
@@ -18,10 +18,12 @@ xxxxx
 - Google Cloud Platform
 
 ## Software architecture
-- ![overview_sw_arch](docs/images/overview_sw_arch.png)
+![overview_sw_arch](docs/images/overview_sw_arch.png)
 
 ### Modules
+- brain
 - vad
 - voice_recognition
 - vision
-- tts
+- speech
+- motion

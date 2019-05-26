@@ -1,0 +1,23 @@
+graph LR
+    subgraph avocado
+        ap(AP: Raspberry pi zero)
+        camera(camera)
+        mic(mic)
+        speaker(speaker)
+        servo_motor(servo_motor)
+        mp(MP: Arduino XX)
+        battery(battery)
+    end
+    cloud(cloud)
+
+    mic-->ap
+    ap-->speaker
+    camera-->ap
+
+    ap-->cloud
+    cloud-->ap
+    ap-->mp
+    mp-->ap
+
+    mp-->servo_motor
+    

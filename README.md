@@ -18,7 +18,7 @@ xxxxx
 - Google Cloud Platform
 
 ## Software architecture
-- TBD
+- ![overview_sw_arch](docs/images/overview_sw_arch.png)
 
 ### Modules
 - vad

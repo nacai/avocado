@@ -29,6 +29,7 @@ graph LR
     voice_recog_cl-->voice_recog
 
     brain-->speech
-    brain-->motion
-
+    brain--> |I2C| motion
+    
+    motion--> |I2C| brain
     motion-->servo_motor

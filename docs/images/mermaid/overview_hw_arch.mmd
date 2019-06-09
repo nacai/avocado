@@ -16,8 +16,8 @@ graph LR
 
     ap-->cloud
     cloud-->ap
-    ap-->mp
-    mp-->ap
+    ap--> |I2C| mp
+    mp--> |I2C| ap
 
-    mp-->servo_motor
+    mp--> |PWM| servo_motor
     

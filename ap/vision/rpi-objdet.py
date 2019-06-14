@@ -81,6 +81,8 @@ for framePi in camera.capture_continuous(rawCapture, format="bgr", use_video_por
         for detection in detections[0,0,:,:]:
                 #postProc(detection, frame, classNames)
                 class_id    = int(detection[1])
+                if not class_id in classNames:
+                    continue
                 class_name = classNames[class_id]
                 confidence = detection[2]
                 if (confidence >= 0.25):

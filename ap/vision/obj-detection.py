@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 
-from picamera.array import PiRGBArray
-from picamera import PiCamera
 import time
 import cv2
 from cv2 import dnn
 import numpy as np
+from picamera.array import PiRGBArray
+from picamera import PiCamera
 
-# camera
+# Camera Setup
 camera = PiCamera()
 camera.resolution = (640, 480)
 camera.framerate = 32
@@ -24,12 +24,11 @@ prototxt = "models/deploy.prototxt"
 caffemodel = "models/mobilenet_ssd.caffemodel"
 
 classNames = { 0: 'background',
-    1: 'aeroplane', 2: 'bicycle', 3: 'bird', 4: 'boat',
-    5: 'bottle', 6: 'bus', 7: 'car', 8: 'cat', 9: 'chair',
-    10: 'cow', 11: 'diningtable', 12: 'dog', 13: 'horse',
-    14: 'motorbike', 15: 'person', 16: 'pottedplant',
-    17: 'sheep', 18: 'sofa', 19: 'train', 20: 'tvmonitor' }
-
+               1: 'aeroplane', 2: 'bicycle', 3: 'bird', 4: 'boat',
+               5: 'bottle', 6: 'bus', 7: 'car', 8: 'cat', 9: 'chair',
+               10: 'cow', 11: 'diningtable', 12: 'dog', 13: 'horse',
+               14: 'motorbike', 15: 'person', 16: 'pottedplant',
+               17: 'sheep', 18: 'sofa', 19: 'train', 20: 'tvmonitor' }
 
 def postProc(detection, frame, classNames):
     cols = 300
@@ -72,12 +71,12 @@ frame_count = 0
 start = time.time()
 for framePi in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
         frame = framePi.array
-        frame_resized = cv2.resize( frame,(300,300))
-
+        frame_resized = cv2.resize(frame,(300,300))
+        
         blob = dnn.blobFromImage( frame_resized, inScaleFactor, (inWidth, inHeight), meanVal, False)
         net.setInput(blob)
         detections = net.forward()
-
+        
         for detection in detections[0,0,:,:]:
                 #postProc(detection, frame, classNames)
                 class_id    = int(detection[1])
@@ -93,9 +92,9 @@ for framePi in camera.capture_continuous(rawCapture, format="bgr", use_video_por
         end = time.time()
         #print( frame_count / (end - start) )
         key = cv2.waitKey(1) & 0xFF
-
+        
         rawCapture.truncate(0)
-
+        
         if key == ord("q"):
                         break
 

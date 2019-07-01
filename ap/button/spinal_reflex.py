@@ -7,12 +7,12 @@ import time
 PIN_NUM_SWITCH_IN = 17
 PIN_NUM_SWITCH_OUT = 27
 
+# I2C initialize
 #i2c = smbus.SMBus(1)
 
 def switch_callback(gpio_pin):
     print("Switch (GPIO) callback")
     #i2c.write_byte_data()
-
     
 def gpio_initialize():
     GPIO.setmode(GPIO.BCM)

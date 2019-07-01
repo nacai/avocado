@@ -1,18 +1,19 @@
 #!/usr/bin/env python3
 
 import time
-#import RPi.GPIO as GPIO
-#import smbus # For I2C
+import RPi.GPIO as GPIO
+import smbus # For I2C
+MP_I2C_ADDRESS = 0x04
 
 PIN_NUM_SWITCH_IN = 17
 PIN_NUM_SWITCH_OUT = 27
 
 # I2C initialize
-#i2c = smbus.SMBus(1)
+i2c = smbus.SMBus(1)
 
 def switch_callback(gpio_pin):
     print("Switch (GPIO) callback")
-    #i2c.write_byte_data()
+    i2c.write_byte(MP_I2C_ADDRESS, 0x02)
     
 def gpio_initialize():
     GPIO.setmode(GPIO.BCM)
@@ -26,7 +27,7 @@ def gpio_initialize():
     
 if __name__ == "__main__":
     print('starting spinal reflex...')
-    #gpio_initialize()
+    gpio_initialize()
     try:
         while True:
             time.sleep(0.1)

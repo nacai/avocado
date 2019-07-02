@@ -28,7 +28,7 @@ def gpio_initialize():
     GPIO.add_event_detect(PIN_NUM_SWITCH_IN,
                           GPIO.RISING,
                           callback=switch_callback,
-                          bouncetime=200)
+                          bouncetime=800)
     GPIO.output(PIN_NUM_SWITCH_OUT, GPIO.HIGH)
     
 if __name__ == "__main__":

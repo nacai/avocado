@@ -10,10 +10,16 @@ PIN_NUM_SWITCH_OUT = 27
 
 # I2C initialize
 i2c = smbus.SMBus(1)
+isHolding = False
 
 def switch_callback(gpio_pin):
-    print("Switch (GPIO) callback")
-    i2c.write_byte(MP_I2C_ADDRESS, 0x02)
+    global isHolding
+    if isHolding:
+        i2c.write_byte(MP_I2C_ADDRESS, 0x00)
+        isHolding = False
+    else:
+        i2c.write_byte(MP_I2C_ADDRESS, 0x01)
+        isHolding = True
     
 def gpio_initialize():
     GPIO.setmode(GPIO.BCM)

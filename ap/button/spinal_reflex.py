@@ -23,7 +23,7 @@ def switch_callback(gpio_pin):
     
 def gpio_initialize():
     GPIO.setmode(GPIO.BCM)
-    GPIO.setup(PIN_NUM_SWITCH_IN, GPIO.IN)
+    GPIO.setup(PIN_NUM_SWITCH_IN, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
     GPIO.setup(PIN_NUM_SWITCH_OUT, GPIO.OUT)
     GPIO.add_event_detect(PIN_NUM_SWITCH_IN,
                           GPIO.RISING,
